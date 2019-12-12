@@ -1,0 +1,92 @@
+/* .ui.menu {
+  background: space;
+}
+
+.ui.grid>.row {
+  margin: 35px;
+}
+
+.navbar {
+  padding: 10px 0px;
+  background-color: #333;
+}
+
+.create-window {
+  background-image: url(https://img.freepik.com/free-vector/yellow-parchment_53876-91513.jpg?size=626&ext=jpg);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 2px 16px;
+}
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+.navul {
+  text-align: center;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navli {
+  float: left;
+}
+
+.navlia {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+body {
+  background-image: url("https://cdn.wallpapersafari.com/82/97/UHpNxb.jpg");
+  background-color: #cccccc;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: auto;
+ } */
+
+ .ui.teal.button, .ui.teal.buttons .button {
+  background-color: red;
+  color: #fff;
+  text-shadow: none;
+  background-image: none;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+
+    span {
+      margin: 0px 15px;
+    }
+  }
+}
+
+
