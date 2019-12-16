@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-import LoginForm from './components/login-form';
+// import LoginForm from './components/login-form';
 import Main from './containers/main';
 // import {
 //   BrowserRouter as Router,
@@ -11,7 +11,7 @@ import Main from './containers/main';
 //   // useParams
 // } from "react-router-dom";
 
-const API = 'http://localhost:3000/api/v1/characters'
+// const API = 'http://localhost:3000/api/v1/characters'
 
 class App extends Component {
 

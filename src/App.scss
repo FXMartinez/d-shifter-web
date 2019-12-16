@@ -69,6 +69,14 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  padding: 7px;
+}
+
+.game-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 15px;
 }
 
 .nav-section {
@@ -78,6 +86,10 @@ body {
 
   &.left {
     justify-content: flex-start;
+    
+    span {
+      padding: 7px;
+    }
   }
 
   &.right {
@@ -85,6 +97,7 @@ body {
 
     span {
       margin: 0px 15px;
+      padding: 7px;
     }
   }
 }
