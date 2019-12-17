@@ -12,9 +12,13 @@ export default class Navigation extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  render() {
+  // myArray.sort((a, b) => a.distance - b.distance)
 
-    // console.log(this.props.state)
+  
+  render() {
+    
+    let dopeGames = this.props.state.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
+    console.log(dopeGames)
 
     const { activeItem } = this.state
     
@@ -33,7 +37,13 @@ export default class Navigation extends Component {
 
             break;
         case 'Dope Games':
-            display = 'higher rated or more engaged games will go here';
+            display = 
+              <div className='game-cards'>  
+                { 
+                dopeGames.map( game => { 
+                  return <div key={ game.id }> <Gamecard game={ game }/> </div> } )
+                }  
+              </div>
             break;
         case 'Games':
             display =
