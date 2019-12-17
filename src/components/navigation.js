@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
-import Post from '../components/post'
+import ShowGame from '../components/show-game'
 import CommentSection from '../components/comment-section'
 import Gamecard from '../components/game-cards'
 import Friendcard from '../components/friend-card'
@@ -15,14 +15,18 @@ import {
 
 export default class Navigation extends Component {
   state = { 
-      activeItem: 'Home'
+      activeItem: 'Home',
+      showNew: false
     }
 
   gameHandleClick = () => { console.log('clicking') }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  
+  test = () => { this.setState({
+    showNew: !this.state.showNew
+  })}
+
   render() {
     
     let dopeGames = this.props.state.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
@@ -50,17 +54,21 @@ export default class Navigation extends Component {
                 { 
                 dopeGames.map( game => { 
                   return <div key={ game.id }>
-                      <Gamecard game={ game } gameHandleClick={ this.gameHandleClick } /> 
+                      <Gamecard game={ game } test={ this.test } /> 
                   </div> } )
                 }  
               </div>
             break;
         case 'Games':
             display =
+              this.state.showNew 
+              ?
+              <ShowGame test={this.test}/>
+              :
               <div className='game-cards'>
                   { 
                     this.props.state.games.map( game => {
-                      return  <div key={game.id}> <Gamecard game={ game } gameHandleClick={ this.gameHandleClick } /> </div>
+                      return  <div key={game.id}> <Gamecard game={ game } test={ this.test} /> </div>
                     })
                   }
               </div>

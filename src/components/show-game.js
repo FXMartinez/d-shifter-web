@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
-const GameShow = (props) => {
+const ShowGame = (props) => {
+
+    console.log('this', props)
 
     return (
-        'this will be the show page'
+        <div>
+            <button onClick={ props.test }>Go Back</button>
+        </div>
     )
 }
+
+export default ShowGame

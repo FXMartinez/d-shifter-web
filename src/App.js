@@ -21,7 +21,9 @@ class App extends Component {
     return (
 
       <div>
-        <Main />
+        <Router>
+          <Main />
+        </Router>
       </div>
 
     );
