@@ -6,16 +6,10 @@ class Main extends Component {
     state = { 
         users: [],
         games: [],
+        comments: []
      }
 
     componentDidMount(){
-        fetch('http://localhost:3000/api/v1/users')
-            .then(res => res.json())
-            .then( data => {
-            this.setState({
-                users: [...data]
-            })
-        })
         fetch('http://localhost:3000/api/v1/games')
             .then(res => res.json())
             .then( data => {
@@ -23,13 +17,20 @@ class Main extends Component {
                 games: [...data]
             })
         })
-        // fetch('http://localhost:3000/api/v1/comments')
+        fetch('http://localhost:3000/api/v1/comments')
+            .then(res => res.json())
+            .then(data => {
+            this.setState({
+                comments: [...data]
+            })
+        })  
+        // fetch('http://localhost:3000/api/v1/users')
         //     .then(res => res.json())
-        //     .then(data => {
+        //     .then( data => {
         //     this.setState({
-        //         comments: [...data]
+        //         users: [...data]
         //     })
-        // })  
+        // })
         // fetch('http://localhost:3000/api/v1/follows')
         //     .then(res => res.json())
         //     .then(data => {

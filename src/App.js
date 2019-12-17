@@ -11,8 +11,6 @@ import Main from './containers/main';
 //   // useParams
 // } from "react-router-dom";
 
-// const API = 'http://localhost:3000/api/v1/characters'
-
 class App extends Component {
 
   state = {
@@ -20,13 +18,10 @@ class App extends Component {
 
   render() {
 
-    // console.log(this.state)
-
     return (
 
       <div>
         <Main />
-        {/* <LoginForm/> */}
       </div>
 
     );

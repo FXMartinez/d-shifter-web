@@ -22,17 +22,25 @@ export default class Navigation extends Component {
 
     switch (this.state.activeItem) {
         case 'Home':
-            display = <CommentSection />;
+            display = 
+            <div className='home'>
+              {
+                this.props.state.comments.map( comment => {
+                  return <div key={comment.id}> <CommentSection comment={ comment }/> </div>
+                })
+              }
+            </div>
+
             break;
         case 'Dope Games':
-            display = <Post />;
+            display = 'higher rated or more engaged games will go here';
             break;
         case 'Games':
             display =
               <div className='game-cards'>
                   { 
                     this.props.state.games.map( game => {
-                    return <Gamecard game={ game }/>;
+                      return  <div key={game.id}> <Gamecard game={ game }/> </div>
                     })
                   }
               </div>
