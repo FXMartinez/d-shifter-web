@@ -21,7 +21,7 @@ class Gamecard extends React.Component {
 
     render () {
 
-    console.log('this', this.state)
+    console.log('this', this.props.gameHandleClick)
 
     return (
 

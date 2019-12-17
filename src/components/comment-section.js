@@ -1,5 +1,7 @@
 import React from 'react'
+import DividerComp from '../components/divider'
 import { Button, Comment, Form, Header } from 'semantic-ui-react'
+
 
 class CommentSection extends React.Component {
   
@@ -27,17 +29,20 @@ class CommentSection extends React.Component {
       return (
 
         <div className='home'>
-          <h1>
-            {this.state.game.name}
-          </h1>
+          <div className='game-title'>
+            <h1>
+              {this.state.game.name}
+            </h1>
+          </div>
           <h3>
-            {this.state.user.username}
+            @{this.state.user.username}
           </h3>
           <div>
             {this.props.comment.content}
           </div>
+          <DividerComp></DividerComp>
         </div>
-        
+
         // <Comment.Group threaded>
         //   <Header as='h3' dividing>
         //     Comments
