@@ -14,23 +14,32 @@ import {
 } from "react-router-dom";
 
 export default class Navigation extends Component {
+  
   state = { 
       activeItem: 'Home',
-      showNew: false
+      showNew: false,
+      gameId: ''
     }
 
   gameHandleClick = () => { console.log('clicking') }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  test = () => { this.setState({
-    showNew: !this.state.showNew
-  })}
+  test = (e) => { debugger
+      this.setState({
+    showNew: !this.state.showNew,
+    gameId: e.target.id
+    })
+  }
 
-  render() {
+render() {
+  
+    let selectedGame = this.props.state.games.find(game => game.id === this.state.gameId)
     
     let dopeGames = this.props.state.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
-    // console.log(dopeGames)
+
+    // console.log('state', this.state.gameId)
+    console.log('state', this.props.state.games )
 
     const { activeItem } = this.state
     
@@ -53,9 +62,10 @@ export default class Navigation extends Component {
               <div className='game-cards'>  
                 { 
                 dopeGames.map( game => { 
-                  return <div key={ game.id }>
-                      <Gamecard game={ game } test={ this.test } /> 
-                  </div> } )
+                  return  <div key={ game.id }>
+                            <Gamecard game={ game } test={ this.test } /> 
+                          </div> 
+                  })
                 }  
               </div>
             break;
@@ -63,12 +73,14 @@ export default class Navigation extends Component {
             display =
               this.state.showNew 
               ?
-              <ShowGame test={this.test}/>
+              <ShowGame test={this.test} game={ this.state.gameId } />
               :
               <div className='game-cards'>
                   { 
                     this.props.state.games.map( game => {
-                      return  <div key={game.id}> <Gamecard game={ game } test={ this.test} /> </div>
+                      return  <div key={game.id}> 
+                                <Gamecard game={ game } test={ this.test } /> 
+                              </div>
                     })
                   }
               </div>
@@ -87,7 +99,7 @@ export default class Navigation extends Component {
     }
 
     return (
-      <Router>
+      
         <Grid>
           <Grid.Column width={2}>
             <Menu fluid vertical tabular>
@@ -133,15 +145,14 @@ export default class Navigation extends Component {
           </Grid.Column>
         </Grid>
 
-        <Switch>
-          <Route path="/Home">
-            <CommentSection />
-          </Route>
-          <Route path="/Games">
-            <Gamecard />
-          </Route>
-        </Switch>
-      </Router>
+        // <Switch>
+        //   <Route path="/Home">
+        //     <CommentSection />
+        //   </Route>
+        //   <Route path="/Games">
+        //     <Gamecard />
+        //   </Route>
+        // </Switch>
     )
   }
 }

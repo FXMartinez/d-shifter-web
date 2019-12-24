@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
-// import LoginForm from './components/login-form';
 import Main from './containers/main';
+import LoginForm from './components/login-form';
 import {
   BrowserRouter as Router,
   // Switch,
@@ -14,17 +14,29 @@ import {
 class App extends Component {
 
   state = {
+    user: 'Flexington'
+  }
+
+  userLoggedIn = (username) => {
+    this.setState({
+      user: username
+    })
   }
 
   render() {
 
     return (
-
-      <div>
-        <Router>
-          <Main />
-        </Router>
-      </div>
+      <Router>
+        <div>
+          {/* { */}
+          {/* this.state.user */}
+          {/* ? */}
+          <Main user={this.state.user}/>
+          {/* :
+          <LoginForm />
+        } */}
+        </div>
+      </Router>
 
     );
   }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from '../components/navigation';
+import Nav from '../components/nav'
+import LoginForm from '../components/login-form';
 
 class Main extends Component {
     
@@ -24,26 +26,10 @@ class Main extends Component {
                 comments: [...data]
             })
         })  
-        // fetch('http://localhost:3000/api/v1/users')
-        //     .then(res => res.json())
-        //     .then( data => {
-        //     this.setState({
-        //         users: [...data]
-        //     })
-        // })
-        // fetch('http://localhost:3000/api/v1/follows')
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         this.setState({
-        //             follows: [...data]
-        //     })
-        // })
     }
     
-    render() { 
-
+    render() {     
         
-
         return ( 
             <div className="main-wrapper">
                 <div className='top-bar'>
@@ -56,10 +42,33 @@ class Main extends Component {
                        <span>Sign Up</span>
                     </div>
                 </div>
-                <Navigation state={this.state} />
+                { 
+                this.props.user 
+                ? 
+                <Nav state={this.state} user={this.props.user}/>
+                :
+                <LoginForm />
+                }
             </div>
          );
+        }
     }
-}
- 
-export default Main;
+    
+    export default Main;
+
+
+
+    // fetch('http://localhost:3000/api/v1/users')
+    //     .then(res => res.json())
+    //     .then( data => {
+    //     this.setState({
+    //         users: [...data]
+    //     })
+    // })
+    // fetch('http://localhost:3000/api/v1/follows')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         this.setState({
+    //             follows: [...data]
+    //     })
+    // })
