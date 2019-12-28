@@ -17,12 +17,14 @@ import {
   NavLink
 } from "react-router-dom";
 import LoginForm from './login-form'
+import SignupForm from './signup-form'
  
 class Nav extends React.Component {
 
     state = { 
         activeItem: 'Home',
         showNew: false,
+        chosenGame: {},
         gameId: ''
         // dopeGames: []
       }
@@ -31,11 +33,18 @@ class Nav extends React.Component {
   
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
-    test = (e) => { debugger
-        this.setState({
-      showNew: !this.state.showNew,
-      gameId: e.target.id
-      })
+    test = (e) => { console.log(e.target.id)
+        fetch(`http://localhost:3000/api/v1/games/${e.target.id}`)
+            .then( resp => resp.json() )
+            .then( data => {
+            this.setState({
+                chosenGame: data
+            })
+        })
+    //     this.setState({
+    //   showNew: !this.state.showNew,
+    //   gameId: e.target.id
+    //   })
     }
 
     renderGames = () => {
@@ -79,7 +88,7 @@ class Nav extends React.Component {
 
         let selectedGame = this.props.state.games.find(game => game.id === this.state.gameId)
 
-        // console.log('state', this.props.state.games )
+        // console.log('game object', this.state.chosenGame.game )
 
         const { activeItem } = this.state
 
@@ -143,11 +152,13 @@ class Nav extends React.Component {
                     <Segment>
                         <Switch>
 
+                            <Route exact path='/Game' render={ () => <div> <ShowGame /> </div> } />
+
                             <Route exact path='/Dopegames' render={ () => topRatedGames.map( game => { 
                                                                     return  <div key={ game.id }> <Gamecard game={ game } test={ this.test } /> </div> 
                                                                     }) } />
 
-                            <Route exact path="/Games" Component={ this.renderGames } />
+                            {/* <Route exact path="/Games" render={ this.renderGames } /> */}
 
                             <Route exact path="/Home" render={ () =>  this.props.state.comments.map( comment => {
                                                                     return <div key={comment.id}> <CommentSection comment={ comment }/> </div>

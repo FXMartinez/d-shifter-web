@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navigation from '../components/navigation';
 import Nav from '../components/nav'
 import LoginForm from '../components/login-form';
+import SignupForm from '../components/signup-form'
+import { Switch, Link, Route } from 'react-router-dom'
 
 class Main extends Component {
     
@@ -35,20 +37,21 @@ class Main extends Component {
                 <div className='top-bar'>
                     <div className="nav-section left">
                         <img src="https://www.mtsac.edu/asac/images/temp_logo_testing.png" className="ui mini image" alt='' />
-                        <span>D Shifter</span>
+                        <span>Shifter</span>
                     </div>
                     <div className="nav-section right">
                        <span>Login</span>
                        <span>Sign Up</span>
                     </div>
                 </div>
-                { 
-                this.props.user 
-                ? 
                 <Nav state={this.state} user={this.props.user}/>
+                {/* { 
+                this.props.user 
+                ?
+                null
                 :
                 <LoginForm />
-                }
+                } */}
             </div>
          );
         }

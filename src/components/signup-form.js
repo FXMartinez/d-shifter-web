@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link, Switch, Route } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import SignupForm from './signup-form';
 
-class LoginForm extends React.Component {
+class SignupForm extends React.Component {
 
   state = {
     username: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   }
 
   usernameHandler = (e) => {
@@ -22,6 +21,11 @@ class LoginForm extends React.Component {
       password: e.target.value
     })
   }
+  confirmPasswordHandler = (e) => {
+    this.setState({
+      confirmPassword: e.target.value
+    })
+  }
 
   render () {
 
@@ -32,7 +36,7 @@ class LoginForm extends React.Component {
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
         {/* <Image src='/logo.png' />  */}
-        Log-in to your account
+        Create Account
       </Header>
       <Form size='large'>
         <Segment stacked>
@@ -45,21 +49,27 @@ class LoginForm extends React.Component {
             type='password'
             onChange={this.passwordHandler}
           />
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Confirm Password'
+            type='password'
+            onChange={this.confirmPasswordHandler}
+          />
 
           <Button color='black' fluid size='large'>
-            Login
+            Submit
           </Button>
         </Segment>
       </Form>
-
-      <Message>
-        New to us? <Link to='http://localhost:3001/SignupForm'> Sign Up </Link>
-      </Message>
-
+      {/* <Message>
+        New to us? <a href='#'>Sign Up</a>
+      </Message> */}
     </Grid.Column>
   </Grid>
   
   )}
 }
 
-export default LoginForm
+export default SignupForm;

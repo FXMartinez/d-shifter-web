@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import './App.scss';
 import Main from './containers/main';
 import LoginForm from './components/login-form';
+import SignupForm from './components/signup-form';
 import {
   BrowserRouter as Router,
-  // Switch,
-  // Route,
+  Switch,
+  Route,
   // Link,
   // useRouteMatch,
   // useParams
@@ -14,7 +15,7 @@ import {
 class App extends Component {
 
   state = {
-    user: 'Flexington'
+    user: ''
   }
 
   userLoggedIn = (username) => {
@@ -28,16 +29,19 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* { */}
-          {/* this.state.user */}
-          {/* ? */}
+        {
+          this.state.user
+          ?
           <Main user={this.state.user}/>
-          {/* :
+          :
           <LoginForm />
-        } */}
+        }
+          <Switch>
+            <Route exact path='/Loginform' component={ () => <div> <LoginForm /> </div> } />
+            <Route exact path='/Signupform' component={ () => <div> <SignupForm /> </div> } />
+          </Switch>
         </div>
       </Router>
-
     );
   }
 }
