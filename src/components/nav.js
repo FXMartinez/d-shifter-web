@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Main from '../containers/main'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
 import ShowGame from '../components/show-game'
 import CommentSection from '../components/comment-section'
 import Gamecard from '../components/game-cards'
-import Friendcard from '../components/friend-card'
+// import Friendcard from '../components/friend-card'
 import { 
-  BrowserRouter as Router,
+//   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  Link,
-  useRouteMatch,
-  useParams,
-  NavLink
+//   Redirect,
+  Link
+//   useRouteMatch,
+//   useParams,
+//   NavLink
 } from "react-router-dom";
-import LoginForm from './login-form'
-import SignupForm from './signup-form'
+// import LoginForm from './login-form'
+// import SignupForm from './signup-form'
  
 class Nav extends React.Component {
 
@@ -86,7 +86,7 @@ class Nav extends React.Component {
 
         let topRatedGames = this.props.state.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
 
-        let selectedGame = this.props.state.games.find(game => game.id === this.state.gameId)
+        // let selectedGame = this.props.state.games.find(game => game.id === this.state.gameId)
 
         // console.log('game object', this.state.chosenGame.game )
 

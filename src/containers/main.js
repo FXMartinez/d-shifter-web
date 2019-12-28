@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Navigation from '../components/navigation';
+// import Navigation from '../components/navigation';
 import Nav from '../components/nav'
-import LoginForm from '../components/login-form';
-import SignupForm from '../components/signup-form'
-import { Switch, Link, Route } from 'react-router-dom'
+// import LoginForm from '../components/login-form';
+// import SignupForm from '../components/signup-form'
+// import { Switch, Link, Route } from 'react-router-dom'
 
 class Main extends Component {
     

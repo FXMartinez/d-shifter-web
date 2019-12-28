@@ -15,7 +15,7 @@ import {
 class App extends Component {
 
   state = {
-    user: ''
+    user: 'Flexington'
   }
 
   userLoggedIn = (username) => {

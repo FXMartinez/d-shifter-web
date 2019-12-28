@@ -1,6 +1,6 @@
 import React from 'react'
 import DividerComp from '../components/divider'
-import { Button, Comment, Form, Header } from 'semantic-ui-react'
+// import { Button, Comment, Form, Header } from 'semantic-ui-react'
 
 
 class CommentSection extends React.Component {
