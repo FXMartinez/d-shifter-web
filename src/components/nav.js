@@ -1,23 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Main from '../containers/main'
-import ReactDOM from 'react-dom'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
 import ShowGame from '../components/show-game'
 import CommentSection from '../components/comment-section'
 import Gamecard from '../components/game-cards'
-import Friendcard from '../components/friend-card'
+import AccountInfo from '../components/accountinfo'
+// import Friendcard from '../components/friend-card'
+// import ReactDOM from 'react-dom'
 import { 
-  BrowserRouter as Router,
+//   BrowserRouter as Router,
+//   Redirect,
+//   useRouteMatch,
+//   useParams,
+//   NavLink
   Switch,
   Route,
-  Redirect,
-  Link,
-  useRouteMatch,
-  useParams,
-  NavLink
+  Link
 } from "react-router-dom";
-import LoginForm from './login-form'
 import SignupForm from './signup-form'
+// import LoginForm from './login-form'
+// import SignupForm from './signup-form'
  
 class Nav extends React.Component {
 
@@ -38,7 +40,7 @@ class Nav extends React.Component {
             .then( resp => resp.json() )
             .then( data => {
             this.setState({
-                chosenGame: data
+                chosenGame: {...data}
             })
         })
     //     this.setState({
@@ -47,30 +49,30 @@ class Nav extends React.Component {
     //   })
     }
 
-    renderGames = () => {
-        if (this.props.user) {
-            this.props.state.games.map( game => {
-                return  <div key={game.id}> 
-                            <Gamecard game={ game } test={ this.test } /> 
-                        </div>
-            })
-        } else {
-            return <Main />
-        }
-    }
+    // renderGames = () => {
+    //     if (this.props.user) {
+    //         this.props.state.games.map( game => {
+    //             return  <div key={game.id}> 
+    //                         <Gamecard game={ game } test={ this.test } /> 
+    //                     </div>
+    //         })
+    //     } else {
+    //         return <Main />
+    //     }
+    // }
 
-    dopeGames = () => { 
-        let topRatedGames = this.props.state.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
-        if (this.props.user) {
-            topRatedGames.map( game => { 
-                return  <div key={ game.id }>
-                            <Gamecard game={ game } test={ this.test } /> 
-                        </div> 
-            })
-        } else {
-            return <Main />
-        }
-    }
+    // dopeGames = () => { 
+    //     let topRatedGames = this.props.state.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
+    //     if (this.props.user) {
+    //         topRatedGames.map( game => { 
+    //             return  <div key={ game.id }>
+    //                         <Gamecard game={ game } test={ this.test } /> 
+    //                     </div> 
+    //         })
+    //     } else {
+    //         return <Main />
+    //     }
+    // }
 
     renderFeed = () => {
         if (this.props.user) {
@@ -86,9 +88,9 @@ class Nav extends React.Component {
 
         let topRatedGames = this.props.state.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
 
-        let selectedGame = this.props.state.games.find(game => game.id === this.state.gameId)
+        // let selectedGame = this.props.state.games.find(game => game.id === this.state.gameId)
 
-        // console.log('game object', this.state.chosenGame.game )
+        // console.log('nav', this.state.chosenGame )
 
         const { activeItem } = this.state
 
@@ -100,7 +102,7 @@ class Nav extends React.Component {
                     
                     <Menu.Item
                         as= { Link }
-                        to='/Home'
+                        to='/'
                         name='Home'
                         active={activeItem === 'Home'}
                         onClick={this.handleItemClick}
@@ -130,19 +132,19 @@ class Nav extends React.Component {
                         onClick={this.handleItemClick}
                         />
 
-                    <Menu.Item
+                    {/* <Menu.Item
                         as={ Link }
                         to='/Friends'
                         name='Friends'
                         active={activeItem === 'Friends'}
                         onClick={this.handleItemClick}
-                        />
+                        /> */}
 
                     <Menu.Item
                         as={ Link }
                         name='Log Out'
                         active={activeItem === 'Log Out'}
-                        onClick={this.handleItemClick}
+                        onClick={this.handleItemClick, this.props.logout}
                         />
 
                     </Menu>
@@ -154,19 +156,27 @@ class Nav extends React.Component {
 
                             <Route exact path='/Game' render={ () => <div> <ShowGame /> </div> } />
 
-                            <Route exact path='/Dopegames' render={ () => topRatedGames.map( game => { 
-                                                                    return  <div key={ game.id }> <Gamecard game={ game } test={ this.test } /> </div> 
-                                                                    }) } />
+                            
+                            <Route exact path='/Dopegames' render={ () => 
+                                    <div className='game-cards'>
+                                {  topRatedGames.map( game => { 
+                                        return  <div key={ game.id }> <Gamecard game={ game } test={ this.test } /> </div> })  } 
+                                    </div>  } />
 
-                            {/* <Route exact path="/Games" render={ this.renderGames } /> */}
+                            <Route exact path="/Games" render={ () => 
+                                    <div className='game-cards'>
+                                { this.props.state.games.map( game => {
+                                        return  <div key={game.id}> <Gamecard game={ game } test={ this.test } /> </div> })}
+                                    </div> } />
 
-                            <Route exact path="/Home" render={ () =>  this.props.state.comments.map( comment => {
-                                                                    return <div key={comment.id}> <CommentSection comment={ comment }/> </div>
-                                                                    })} />
+                            <Route exact path="/" render={ () =>  this.props.state.comments.map( comment => {
+                                                                    return <div key={comment.id}> <CommentSection comment={ comment }/> </div>  })} />
 
-                            <Route exact path='/Friends' render={ () => <h1> Friend stuff </h1> } />
+                            <Route exact path='/Account' render={ () => <AccountInfo user={ this.props.user }/> } />
 
-                            <Route exact path='/Account' render={ () => <h1> Account info </h1> } />
+                            {/* <Route exact path='/Friends' render={ () => <h1> Friend stuff </h1> } /> */}
+
+                            <Route path='/Games/:id' component={ ShowGame } />
 
                         </Switch>
                     </Segment>

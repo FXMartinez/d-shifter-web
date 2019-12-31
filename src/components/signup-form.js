@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 
 class SignupForm extends React.Component {
 
@@ -7,6 +7,22 @@ class SignupForm extends React.Component {
     username: '',
     password: '',
     confirmPassword: ''
+  }
+
+  createUser = () => {
+      fetch('http://localhost:3000/api/v1/users', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accepts": "application/json"
+      },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password
+        })
+      })
+      .then(resp => resp.json())
+      .then( console.log )
   }
 
   usernameHandler = (e) => {
@@ -29,6 +45,10 @@ class SignupForm extends React.Component {
 
   render () {
 
+    console.log(this.state.username)
+    console.log(this.state.password)
+    console.log(this.state.confirmPassword)
+
     return (
 
 
@@ -38,9 +58,16 @@ class SignupForm extends React.Component {
         {/* <Image src='/logo.png' />  */}
         Create Account
       </Header>
-      <Form size='large'>
+      <Form size='large' >
         <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' onChange={this.usernameHandler}/>
+
+          <Form.Input 
+            fluid icon='user' 
+            iconPosition='left' 
+            placeholder='Username' 
+            onChange={this.usernameHandler}
+          />
+
           <Form.Input
             fluid
             icon='lock'
@@ -58,7 +85,7 @@ class SignupForm extends React.Component {
             onChange={this.confirmPasswordHandler}
           />
 
-          <Button color='black' fluid size='large'>
+          <Button color='black' fluid size='large' type='submit' onClick={ this.createUser }>
             Submit
           </Button>
         </Segment>

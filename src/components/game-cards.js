@@ -1,7 +1,7 @@
 import React from 'react'
-import { Card, Icon } from 'semantic-ui-react'
-import ShowGame from '../components/show-game'
 import { Link } from 'react-router-dom'
+// import { Card, Icon } from 'semantic-ui-react'
+// import ShowGame from '../components/show-game'
 
 class Gamecard extends React.Component {
 
@@ -29,9 +29,11 @@ class Gamecard extends React.Component {
     return (
   
         <div className="ui card">
-            <div className="image"> <img id={ this.props.game.id } src={this.props.game.image} onClick={ this.props.test } as={ Link } to={ '/Game' } /></div>
+            <div className="image"> <img id={ this.props.game.id } src={ this.props.game.image } onClick={ this.props.test }  /></div>
                 <div className="content">
-                    <div className="header">{this.props.game.name}</div>
+                    <div className="header">
+                        <Link to={ `/Games/${this.props.game.id}` }> { this.props.game.name } </Link>
+                    </div>
                         <div className="meta">Game</div>
                             <div className="description">
                                 { this.props.game.description }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, Switch, Route } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import SignupForm from './signup-form';
+import { Link } from 'react-router-dom';
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+// import SignupForm from '../components/signup-form';
 
 class LoginForm extends React.Component {
 
@@ -25,6 +25,8 @@ class LoginForm extends React.Component {
 
   render () {
 
+    // console.log(this.props.test)
+
     return (
 
 
@@ -37,23 +39,24 @@ class LoginForm extends React.Component {
       <Form size='large'>
         <Segment stacked>
           <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' onChange={this.usernameHandler}/>
-          <Form.Input
+          {/* <Form.Input
             fluid
             icon='lock'
             iconPosition='left'
             placeholder='Password'
             type='password'
             onChange={this.passwordHandler}
-          />
+          /> */}
 
-          <Button color='black' fluid size='large'>
+          <Button color='black' fluid size='large' onClick={ this.props.test }>
             Login
           </Button>
         </Segment>
       </Form>
 
       <Message>
-        New to us? <Link to='http://localhost:3001/SignupForm'> Sign Up </Link>
+        New to us? <Link to='/Signup'> Sign Up </Link>
+        {/* { this.props.link } */}
       </Message>
 
     </Grid.Column>

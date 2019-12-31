@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Navigation from '../components/navigation';
 import Nav from '../components/nav'
-import LoginForm from '../components/login-form';
-import SignupForm from '../components/signup-form'
-import { Switch, Link, Route } from 'react-router-dom'
+// import Navigation from '../components/navigation';
+// import LoginForm from '../components/login-form';
+// import SignupForm from '../components/signup-form'
+// import { Switch, Link, Route } from 'react-router-dom'
 
 class Main extends Component {
     
     state = { 
-        users: [],
         games: [],
         comments: []
      }
@@ -40,11 +39,10 @@ class Main extends Component {
                         <span>Shifter</span>
                     </div>
                     <div className="nav-section right">
-                       <span>Login</span>
-                       <span>Sign Up</span>
+                       
                     </div>
                 </div>
-                <Nav state={this.state} user={this.props.user}/>
+                <Nav state={this.state} user={this.props.user} logout={ this.props.logout }/>
                 {/* { 
                 this.props.user 
                 ?
