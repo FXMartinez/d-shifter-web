@@ -4,6 +4,7 @@ import { Grid, Menu, Segment } from 'semantic-ui-react'
 import ShowGame from '../components/show-game'
 import CommentSection from '../components/comment-section'
 import Gamecard from '../components/game-cards'
+
 import AccountInfo from '../components/accountinfo'
 // import Friendcard from '../components/friend-card'
 // import ReactDOM from 'react-dom'
@@ -18,6 +19,7 @@ import {
   Link
 } from "react-router-dom";
 import SignupForm from './signup-form'
+
 // import LoginForm from './login-form'
 // import SignupForm from './signup-form'
  
