@@ -17,8 +17,51 @@ class App extends Component {
 
   state = {
     users: [],
-    user: ''
+    user: '',
+    username: '',
+    password: '',
+    confirmPassword: ''
   }
+
+  createUser = () => {
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+    },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        user: data
+      })
+    })
+  }
+
+  usernameHandler = (e) => {
+    this.setState({
+      username: e.target.value
+    })
+  }
+
+  passwordHandler = (e) => {
+    this.setState({
+      password: e.target.value
+    })
+  }
+  
+  confirmPasswordHandler = (e) => {
+    this.setState({
+      confirmPassword: e.target.value
+    })
+  }
+
+
 
   componentDidMount(){
     fetch('http://localhost:3000/api/v1/users')
@@ -75,8 +118,8 @@ class App extends Component {
 
   render() {
 
-    // console.log('app', this.state.user )
-    
+    console.log('app', this.state.username )
+    console.log('app', this.state.password )
 
     return (
       <Router>
@@ -89,7 +132,7 @@ class App extends Component {
           // <LoginForm link={ this.renderSignup } userAuth={ this.userAuth } test={ this.onClickTest } />
           <Switch>
             <Route exact path='/' render={ () => <LoginForm link={ this.renderSignup } userAuth={ this.userAuth } test={ this.onClickTest } /> } />
-            <Route exact path='/Signup' render={ () => <SignupForm /> } />
+            <Route exact path='/Signup' render={ () => <SignupForm createUser={this.createUser} usernameHandler={this.usernameHandler} passwordHandler={this.passwordHandler} confirmPasswordHandler={this.confirmPasswordHandler}/> } />
           </Switch>
         }
         </div>
