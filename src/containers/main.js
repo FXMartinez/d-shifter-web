@@ -144,7 +144,13 @@ class Main extends Component {
                             <Route exact path="/" render={ () =>  this.props.comments.map( comment => {
                                                                     return <div key={comment.id}> <CommentSection comment={ comment }/> </div>  })} />
 
-                            <Route exact path='/Account' render={ () => <AccountInfo user={ this.props.user }/> } />
+                            <Route exact path='/Account' render={ () => 
+                                <AccountInfo 
+                                    user={ this.props.user } 
+                                    findComment={this.props.findComment}
+                                    findGamename={this.props.findGamename}
+                                /> 
+                            }/>
 
                             <Route path='/Games/:id' render={ () => 
                                 <ShowGame 

@@ -32,6 +32,18 @@ class App extends Component {
     })
   }
 
+  findGamename = (gameId) => {
+    return this.state.games.find(game => {
+      return game.id === gameId ? game.name : null
+    })
+  }
+
+  findComment = (id) => {
+    return this.state.comments.filter(comment => {
+      return comment.user_id === id
+    })
+  }
+
   newComment = (comment) => {
     this.setState({
       comments: [...this.state.comments, comment]
@@ -165,6 +177,8 @@ class App extends Component {
             comments={this.state.comments}
             users={this.state.users}
             newComment={this.newComment}
+            findComment={this.findComment}
+            findGamename={this.findGamename}
             />} />
             :
             <Switch>
