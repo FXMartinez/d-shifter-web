@@ -60,7 +60,7 @@ class ShowGame extends React.Component {
                 />
             </div> <br/> <br/>
                     
-            <Button as={ Link } to='/Dopegames'> Go Back </Button>
+            <Button as={ Link } to='/Games'> Go Back </Button>
 
         </div>
         

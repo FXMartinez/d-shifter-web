@@ -15,6 +15,7 @@ import {
       Route,
       Link
     } from "react-router-dom";
+import UserProfile from '../components/userprofiles';
 // import Navigation from '../components/navigation';
 // import LoginForm from '../components/login-form';
 // import SignupForm from '../components/signup-form'
@@ -152,7 +153,9 @@ class Main extends Component {
                                 /> 
                             }/>
 
-                            <Route path='/Games/:id' render={ () => 
+                            <Route path='/Account/:id' render={() => <UserProfile {...this.props} />} />
+
+                            <Route path='/Games/:username' render={ () => 
                                 <ShowGame 
                                     {...this.props} 
                                     findUsername={ this.props.findUsername } 

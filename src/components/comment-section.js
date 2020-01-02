@@ -26,6 +26,11 @@ class CommentSection extends React.Component {
 
   render() {
 
+    const goTo = {
+      pathname: `/Account/${this.state.user.username}`,
+      param1: this.state.user
+    }
+
     // console.log('comment', this.state.game)
     // console.log('comment', this.state.user)
 
@@ -42,14 +47,14 @@ class CommentSection extends React.Component {
             {
               this.state.user.image
               ?
-              <Image src={ this.state.user.image} />
+              <Image src={ this.state.user.image } />
               :
               <Image src='https://muhka-ensembles.imgix.net/assets/public/000/017/626/large/blank.png?w=768&h=768&dpr=2.625&ch=DPR&auto=format%2Ccompress'/>
             }
           </Grid.Column>
             <Grid.Column width={12}>
               <h3>
-                <Link> 
+                <Link to={ goTo }> 
                   {`@${this.state.user.username}`}
                 </Link> 
               </h3>

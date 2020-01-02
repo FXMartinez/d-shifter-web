@@ -38,13 +38,11 @@ class Gamecard extends React.Component {
             method: 'delete'
           })
           .then(response => response.json())
-          .then(data => console.log('unfollow', this.filterFollows(data))
-        //     {
-        //       this.setState({
-        //           follows: this.filterFollows(data)
-        //     })
-        // }
-        )
+          .then(data => {
+              this.setState({
+                  follows: this.filterFollows(data)
+            })
+        })
     }
 
     createFollow = (userId, gameId) => {
@@ -76,7 +74,7 @@ class Gamecard extends React.Component {
 
     filterFollows = (followOb) => {
         return this.state.follows.filter( follow => {
-            return follow != followOb;
+            return follow.id != followOb.id;
             debugger
         })
     }
@@ -85,7 +83,7 @@ class Gamecard extends React.Component {
 
     const thisFollow = this.followExists(this.props.user.id)
 
-    // console.log('follow object', thisFollow)
+    // console.log('state follows', this.state.follows)
 
     return (
   
