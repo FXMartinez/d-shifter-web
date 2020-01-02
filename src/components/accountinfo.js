@@ -24,7 +24,7 @@ function AccountInfo(props) {
                 sex: { props.user.sex } <br/>
             bio: { props.user.bio } <br/> */}
             </div>
-            <div>  
+            <div className='account-comments'>  
                 <Comment.Group>
                     <Header as='h3' dividing>
                         Comments
@@ -32,15 +32,17 @@ function AccountInfo(props) {
 
                     {props.findComment(props.user.id).map(comment => {
                         return  <Comment>
-                                    <Comment.Avatar src={props.findGamename(comment.game_id).image} />
-                                        <Comment.Content>
-                                            <Comment.Author as='a'>{ props.findGamename(comment.game_id).name }</Comment.Author>
-                                            {/* {console.log(props.findGamename(comment.game_id).name)} */}
-                                            <Comment.Metadata>
-                                            </Comment.Metadata>
-                                            <Comment.Text> { comment.content } </Comment.Text> <br/>
-                                        </Comment.Content>
-                                    <Header as='h3' dividing></Header>
+                                    <div className='left-comment'>
+                                        <Comment.Avatar src={props.findGamename(comment.game_id).image} />
+                                            <Comment.Content>
+                                                <Comment.Author as='a'>{ props.findGamename(comment.game_id).name }</Comment.Author>
+                                                {/* {console.log(props.findGamename(comment.game_id).name)} */}
+                                                <Comment.Metadata>
+                                                </Comment.Metadata>
+                                                <Comment.Text> { comment.content } </Comment.Text> <br/>
+                                            </Comment.Content>
+                                        <Header as='h3' dividing></Header>
+                                    </div>
                                 </Comment>
                     })}
 
