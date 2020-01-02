@@ -40,7 +40,7 @@ class ShowGame extends React.Component {
 
             <div className='profile'>
                 <h1>{ this.state.game.name }</h1> <br/>
-                <img src={ this.state.game.image } alt=''/> <br/><br/>
+                <img className='img-fit' src={ this.state.game.image } alt=''/> <br/><br/>
             </div> <br/><br/>
 
             <div className='font'>

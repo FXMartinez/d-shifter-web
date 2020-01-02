@@ -87,13 +87,13 @@ class Main extends Component {
                         onClick={this.handleItemClick}
                         />
 
-                    <Menu.Item
+                    {/* <Menu.Item
                         as={ Link }
                         to='/Dopegames'
                         name='Dope Games'
                         active={activeItem === 'Dope Games'}
                         onClick={this.handleItemClick}
-                        />
+                        /> */}
 
                     <Menu.Item
                         as={ Link }
