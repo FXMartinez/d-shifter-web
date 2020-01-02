@@ -29,7 +29,7 @@ class Gamecard extends React.Component {
     return (
   
         <div className="ui card">
-            <div className="image"> <img id={ this.props.game.id } src={ this.props.game.image } onClick={ this.props.test }  /></div>
+            <div className="image"> <img id={ this.props.game.id } src={ this.props.game.image } onClick={ this.props.test } alt='' /></div>
                 <div className="content">
                     <div className="header">
                         <Link to={ `/Games/${this.props.game.id}` }> { this.props.game.name } </Link>

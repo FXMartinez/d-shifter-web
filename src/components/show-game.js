@@ -1,51 +1,59 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react'
+import GameComments from './game-comments';
 
-// let game;
 
-function ShowGame({match}) {
-    
-    useEffect(() => {
-        fetchItem();
-        // console.log('show game', match);
-    }, []);
-    
-    const [item, setItem] = useState({
+class ShowGame extends React.Component {
+
+    state = {
         game: {},
         follows: [],
         comments: []
-    });
-    
-    const fetchItem = async () => {
-        const fetchItem = await fetch(`http://localhost:3000/api/v1/games/${match.params.id}`)
-        const item = await fetchItem.json();
-        setItem(item);
-        console.log('show game', item)
+    }
+
+    componentDidMount() {
+        fetch(`http://localhost:3000/api/v1/${this.props.location.pathname.toLowerCase()}`)
+        .then( resp => resp.json())
+        .then( gameObject => {
+            this.setState({
+                game: {...gameObject.game},
+                follows: [...gameObject.follows],
+                comments: [...gameObject.comments]
+            })
+        })
     }
     
-
-    console.log('outside', item)
+    render() {
+    // console.log('outside', this.state.game)
+    
     return (
+        
         <div>
-            
-            <h1>{item.game.name}</h1>
-            <img src={item.game.image} alt=''/>
-            <p> Release Date: {item.game.release_date} </p>
-            <p> Description: {item.game.description} </p>
-            <p> Rating: {item.game.rating} </p>
-            <p> Follows: {item.follows.length} </p>
-            <p> Comments: 
-            {item.comments.map(comment => {
-                return <p> {comment.content} </p>
-            })}
-            </p>    
-
-
+        
+            <h1>{ this.state.game.name }</h1> <br/>
+            <img src={ this.state.game.image } alt=''/> <br/>
+                <p> Release Date: { this.state.release_date } <br/>
+                Description: { this.state.game.description } <br/>
+                Rating: { this.state.game.rating } <br/>
+                Follows: { this.state.follows.length } <br/>
+                </p> <br/><br/>
+                <div>
+                    <GameComments 
+                        game={ this.state } 
+                        findUsername={ this.props.findUsername } 
+                        user={this.props.user}
+                        newComment={this.props.newComment}
+                    />
+                </div>
+                    
             <Button as={ Link } to='/Dopegames'> Go Back </Button>
+
         </div>
-    )
+        
+        )
+    }
 }
-
-export default ShowGame
-
+    
+export default ShowGame;

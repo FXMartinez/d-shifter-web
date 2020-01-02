@@ -1,5 +1,7 @@
 import React from 'react'
-import DividerComp from '../components/divider'
+import { Divider, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+// import DividerComp from '../components/divider'
 // import { Button, Comment, Form, Header } from 'semantic-ui-react'
 
 
@@ -24,26 +26,30 @@ class CommentSection extends React.Component {
 
   render() {
 
-    // console.log(this.state.user.username)
+    // console.log('comment', this.state.game)
+    // console.log('comment', this.state.user)
 
     return (
 
       <div className='home'>
-        <div className='game-title'>
-          <h1>
-            {this.state.game.name}
-          </h1>
-        </div>
+        {/* <div className='game-title'>
+        </div> */}
         <h3>
-          @{this.state.user.username}
+          <Link> 
+            @{this.state.user.username}
+          </Link> 
         </h3>
         <div>
           {this.props.comment.content}
         </div>
-        <DividerComp></DividerComp>
+          <Segment basic textAlign='center'>
+            <Divider horizontal> <h3> <Link to={`/Games/${this.state.game.id}`}> {this.state.game.name} </Link> </h3> </Divider>
+          </Segment>
       </div>
-  )}
-}
+
+
+  )} // end of render
+} // end of class
 
 export default CommentSection;
 

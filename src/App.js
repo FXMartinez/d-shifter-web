@@ -9,6 +9,7 @@ import {
   Switch,
   Route,
   Link,
+  withRouter
   // useRouteMatch,
   // useParams
 } from "react-router-dom";
@@ -16,12 +17,50 @@ import {
 class App extends Component {
 
   state = {
+    games: [],
+    comments: [],
     users: [],
     user: '',
     username: '',
     password: '',
     confirmPassword: ''
   }
+
+  findUsername = (userId) => {
+    return this.state.users.find(user => {
+      return user.id === userId ? user.username : null
+    })
+  }
+
+  newComment = (comment) => {
+    this.setState({
+      comments: [...this.state.comments, comment]
+    })
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:3000/api/v1/games')
+        .then(res => res.json())
+        .then( data => {
+        this.setState({
+            games: [...data]
+        })
+    })
+    fetch('http://localhost:3000/api/v1/comments')
+        .then(res => res.json())
+        .then(data => {
+        this.setState({
+            comments: [...data]
+        })
+    })
+    fetch('http://localhost:3000/api/v1/users')
+        .then(res => res.json())
+        .then( data => {
+        this.setState({
+            users: [...data]
+        })
+    }) 
+}
 
   createUser = () => {
     fetch('http://localhost:3000/api/v1/users', {
@@ -59,18 +98,6 @@ class App extends Component {
     this.setState({
       confirmPassword: e.target.value
     })
-  }
-
-
-
-  componentDidMount(){
-    fetch('http://localhost:3000/api/v1/users')
-        .then(res => res.json())
-        .then( data => {
-        this.setState({
-            users: [...data]
-          })
-      })
   }
 
   userAuth = (username) => {
@@ -118,25 +145,35 @@ class App extends Component {
 
   render() {
 
-    console.log('app', this.state.username )
-    console.log('app', this.state.password )
+    console.log('app', this.findUsername(1))
+    // console.log('app', this.state.password )
+    // console.log('username', this.state.username)
 
     return (
-      <Router>
-        <div>
+
+      
+      <div>
         {
           this.state.user
           ?
-          <Main user={this.state.user} logout={this.logoutFunction} />
-          :
-          // <LoginForm link={ this.renderSignup } userAuth={ this.userAuth } test={ this.onClickTest } />
-          <Switch>
+          <Route path='/' render={(routerProps) => <Main
+            findUsername={ this.findUsername } 
+            {...routerProps} 
+            user={this.state.user} 
+            logout={this.logoutFunction}
+            games={this.state.games}
+            comments={this.state.comments}
+            users={this.state.users}
+            newComment={this.newComment}
+            />} />
+            :
+            <Switch>
             <Route exact path='/' render={ () => <LoginForm link={ this.renderSignup } userAuth={ this.userAuth } test={ this.onClickTest } /> } />
             <Route exact path='/Signup' render={ () => <SignupForm createUser={this.createUser} usernameHandler={this.usernameHandler} passwordHandler={this.passwordHandler} confirmPasswordHandler={this.confirmPasswordHandler}/> } />
           </Switch>
         }
         </div>
-      </Router>
+      
     );
   }
 }
