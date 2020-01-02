@@ -54,7 +54,7 @@ class Main extends Component {
     
     render() { 
         
-        console.log(this.props.games[0])
+        // console.log(this.props.user)
 
         let topRatedGames = this.props.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
 
@@ -132,13 +132,13 @@ class Main extends Component {
                             <Route exact path='/Dopegames' render={ () => 
                                     <div className='game-cards'>
                                 {  topRatedGames.map( game => { 
-                                        return  <div key={ game.id }> <Gamecard game={ game } test={ this.test } /> </div> })  } 
+                                        return  <div key={ game.id }> <Gamecard game={ game } test={ this.test } user={ this.props.user } /> </div> })  } 
                                     </div>  } />
 
                             <Route exact path="/Games" render={ () => 
                                     <div className='game-cards'>
                                 { this.props.games.map( game => {
-                                        return  <div key={game.id}> <Gamecard game={ game } test={ this.test } /> </div> })}
+                                        return  <div key={game.id}> <Gamecard game={ game } test={ this.test } user={ this.props.user }/> </div> })}
                                     </div> } />
 
                             <Route exact path="/" render={ () =>  this.props.comments.map( comment => {

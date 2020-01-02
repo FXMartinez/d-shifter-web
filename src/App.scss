@@ -92,12 +92,20 @@ body {
   padding: 15px;
 }
 
+.content {
+  background-color: grey;
+}
+
 .home {
   justify-content: center;
 }
 
 .profile {
   text-align: center;
+}
+
+.font {
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
 .nav-section {

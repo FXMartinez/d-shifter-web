@@ -137,14 +137,14 @@ class App extends Component {
   }
 
   onClickTest = () => {
-    console.log('clicking', this.state.username)
+    // console.log('clicking', this.state.username)
     this.state.users.forEach( user => {
       if ( user.username === 'Flexington') {
         this.setState({
           user: user
         })
       } else {
-        console.log('user doesnt exist')
+        // console.log('user doesnt exist')
       }
     })
   }
@@ -157,7 +157,7 @@ class App extends Component {
 
   render() {
 
-    console.log('app', this.findUsername(1))
+    // console.log('app', this.findUsername(1))
     // console.log('app', this.state.password )
     // console.log('username', this.state.username)
 

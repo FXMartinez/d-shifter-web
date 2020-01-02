@@ -37,22 +37,28 @@ class ShowGame extends React.Component {
     return (
         
         <div>
-        
-            <h1>{ this.state.game.name }</h1> <br/>
-            <img src={ this.state.game.image } alt=''/> <br/>
-                <p> Release Date: { this.state.release_date } <br/>
-                Description: { this.state.game.description } <br/>
-                Rating: { this.state.game.rating } <br/>
-                Follows: { this.state.follows.length } <br/>
+
+            <div className='profile'>
+                <h1>{ this.state.game.name }</h1> <br/>
+                <img src={ this.state.game.image } alt=''/> <br/><br/>
+            </div> <br/><br/>
+
+            <div className='font'>
+                <p> <strong>Release Date: </strong> { this.state.game.release_date } <br/><br/>
+                <strong>Description: </strong> { this.state.game.description } <br/><br/>
+                <strong>Rating: </strong> { this.state.game.rating } <br/><br/>
+                <strong>Follows: </strong> { this.state.follows.length } <br/><br/>
                 </p> <br/><br/>
-                <div>
-                    <GameComments 
-                        game={ this.state } 
-                        findUsername={ this.props.findUsername } 
-                        user={this.props.user}
-                        newComment={this.newComment}
-                    />
-                </div>
+            </div>
+
+            <div>
+                <GameComments 
+                    game={ this.state } 
+                    findUsername={ this.props.findUsername } 
+                    user={this.props.user}
+                    newComment={this.newComment}
+                />
+            </div> <br/> <br/>
                     
             <Button as={ Link } to='/Dopegames'> Go Back </Button>
 
