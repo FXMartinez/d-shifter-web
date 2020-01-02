@@ -21,6 +21,10 @@ class GameComments extends React.Component {
       console.log(this.state.comment)
     }
 
+    resetForm = () => {
+      document.getElementById('comment-field').reset();
+    }
+
     submitComment = () => {
       this.state.comment
       ?
@@ -39,7 +43,8 @@ class GameComments extends React.Component {
         .then(resp => resp.json())
         .then( data => {
           this.props.newComment(data)
-        })
+        },
+        this.resetForm())
         :
         alert('You cannot submit an empty comment')
     }
@@ -56,7 +61,7 @@ class GameComments extends React.Component {
             Comments
             </Header>
 
-            <Form onChange={ this.commentHandler }>
+            <Form onChange={ this.commentHandler } id='comment-field'>
               <Form.TextArea />
               <Button content='Add Comment' type='submit' labelPosition='left' icon='edit' onClick={this.submitComment} primary />
             </Form>

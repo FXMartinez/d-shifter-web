@@ -151,7 +151,6 @@ class Main extends Component {
                                     {...this.props} 
                                     findUsername={ this.props.findUsername } 
                                     user={ this.props.user } 
-                                    newComment={this.props.newComment }
                                 /> 
                             }/>
 

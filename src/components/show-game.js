@@ -13,6 +13,12 @@ class ShowGame extends React.Component {
         comments: []
     }
 
+    newComment = (comment) => {
+        this.setState({
+          comments: [...this.state.comments, comment]
+        })
+    }
+
     componentDidMount() {
         fetch(`http://localhost:3000/api/v1/${this.props.location.pathname.toLowerCase()}`)
         .then( resp => resp.json())
@@ -44,7 +50,7 @@ class ShowGame extends React.Component {
                         game={ this.state } 
                         findUsername={ this.props.findUsername } 
                         user={this.props.user}
-                        newComment={this.props.newComment}
+                        newComment={this.newComment}
                     />
                 </div>
                     
