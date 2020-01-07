@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 
 class SignupForm extends React.Component {
@@ -41,7 +42,7 @@ class SignupForm extends React.Component {
             onChange={this.props.confirmPasswordHandler}
           />
 
-          <Button color='black' fluid size='large' type='submit' onClick={ this.props.createUser }>
+          <Button color='black' fluid size='large' type='submit' onClick={ this.props.createUser } as={ Link } to={'/'}>
             Submit
           </Button>
         </Segment>

@@ -11,6 +11,7 @@ class GameComments extends React.Component {
 
     userFound = (userId) => {
       let user = this.props.findUsername(userId)
+      console.log('in function', userId)
       return user.username
     }
 
