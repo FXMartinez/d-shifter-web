@@ -12,7 +12,6 @@ class SignupForm extends React.Component {
   <Grid textAlign='center' style={{ height: '70vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='teal' textAlign='center'>
-        {/* <Image src='/logo.png' />  */}
         Create Account
       </Header>
       <Form size='large' >

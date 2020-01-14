@@ -20,9 +20,9 @@ function AccountInfo(props) {
                 <Header as='h3'>
                     {props.user.username}
                 </Header> <br/>
-                {/* active: {props.user.active} <br/>
+                active: {props.user.active} <br/>
                 sex: { props.user.sex } <br/>
-            bio: { props.user.bio } <br/> */}
+                bio: { props.user.bio } <br/>
             </div>
             <div className='account-comments'>  
                 <Comment.Group>
@@ -36,7 +36,6 @@ function AccountInfo(props) {
                                         <Comment.Avatar src={props.findGamename(comment.game_id).image} />
                                             <Comment.Content>
                                                 <Comment.Author as='a'>{ props.findGamename(comment.game_id).name }</Comment.Author>
-                                                {/* {console.log(props.findGamename(comment.game_id).name)} */}
                                                 <Comment.Metadata>
                                                 </Comment.Metadata>
                                                 <Comment.Text> { comment.content } </Comment.Text> <br/>

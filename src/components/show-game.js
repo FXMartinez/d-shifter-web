@@ -32,7 +32,6 @@ class ShowGame extends React.Component {
     }
     
     render() {
-    // console.log('outside', this.state.game)
     
     return (
         

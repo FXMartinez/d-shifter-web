@@ -20,10 +20,10 @@ function UserProfile(props) {
                 <Header as='h3'>
                     { user.username }
                 </Header> <br/>
-                {/* active: {props.user.active} <br/>
+                active: {props.user.active} <br/>
                 sex: { props.user.sex } <br/>
-            bio: { props.user.bio } <br/> */}
-            </div>
+                bio: { props.user.bio } <br/>
+            </div> <br/>
             <div className='account-comments'>  
                 <Comment.Group>
                     <Header as='h3' dividing>

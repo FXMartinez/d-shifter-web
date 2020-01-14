@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
-// import Main from '../containers/main'
 import { Grid, Menu, Segment, Header } from 'semantic-ui-react'
 import ShowGame from '../components/show-game'
 import CommentSection from '../components/comment-section'
 import Gamecard from '../components/game-cards'
 import AccountInfo from '../components/accountinfo'
 import { 
-    //   BrowserRouter as Router,
-    //   Redirect,
-    //   useRouteMatch,
-    //   useParams,
-    //   NavLink
       Switch,
       Route,
       Link
     } from "react-router-dom";
 import UserProfile from '../components/userprofiles';
-// import Navigation from '../components/navigation';
-// import LoginForm from '../components/login-form';
-// import SignupForm from '../components/signup-form'
-// import { Switch, Link, Route } from 'react-router-dom'
 
 class Main extends Component {
     
@@ -32,16 +22,6 @@ class Main extends Component {
     gameHandleClick = () => { console.log('clicking') }
   
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  
-    // test = (e) => { console.log(e.target.id)
-    //     fetch(`http://localhost:3000/api/v1/games/${e.target.id}`)
-    //         .then( resp => resp.json() )
-    //         .then( data => {
-    //         this.setState({
-    //             chosenGame: {...data}
-    //         })
-    //     })
-    // }
 
     renderFeed = () => {
         if (this.props.user) {
@@ -54,16 +34,10 @@ class Main extends Component {
     }
     
     render() { 
-        
-        // console.log(this.props.user)
 
         let topRatedGames = this.props.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
 
         const { activeItem } = this.state
-        
-        // let selectedGame = this.props.state.games.find(game => game.id === this.state.gameId)
-        
-        // console.log('main', this.props)
 
         return ( 
             <div className="main-wrapper">
@@ -87,14 +61,6 @@ class Main extends Component {
                         active={activeItem === 'Home'}
                         onClick={this.handleItemClick}
                         />
-
-                    {/* <Menu.Item
-                        as={ Link }
-                        to='/Dopegames'
-                        name='Dope Games'
-                        active={activeItem === 'Dope Games'}
-                        onClick={this.handleItemClick}
-                        /> */}
 
                     <Menu.Item
                         as={ Link }
