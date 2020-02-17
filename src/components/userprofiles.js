@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Comment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 function UserProfile(props) {
 
@@ -27,7 +28,7 @@ function UserProfile(props) {
             <div className='account-comments'>  
                 <Comment.Group>
                     <Header as='h3' dividing>
-                        Comments
+                        <Link to='/Account'> Comments </Link> | <Link to='/UserGames'> Games </Link>
                     </Header>
 
                     {props.findComment(user.id).map(comment => {

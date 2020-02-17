@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header, Comment } from 'semantic-ui-react'
+import { Header, Comment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 function AccountInfo(props) {
 
@@ -27,10 +28,10 @@ function AccountInfo(props) {
             <div className='account-comments'>  
                 <Comment.Group>
                     <Header as='h3' dividing>
-                        Comments
+                        <Link to='/Account'> Comments </Link> | <Link to='/UserGames'> Games </Link>
                     </Header>
 
-                    {props.findComment(props.user.id).map(comment => {
+                    { props.findComment(props.user.id).map(comment => {
                         return  <Comment>
                                     <div className='left-comment'>
                                         <Comment.Avatar src={props.findGamename(comment.game_id).image} />

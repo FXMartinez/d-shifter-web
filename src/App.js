@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import './App.scss';
 import Main from './containers/main';
 import LoginForm from './components/login-form';
 import SignupForm from './components/signup-form';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  withRouter
-  // useRouteMatch,
-  // useParams
+  Link
 } from "react-router-dom";
 
 class App extends Component {
@@ -158,9 +153,7 @@ class App extends Component {
 
   render() {
 
-    // console.log('app', this.findUsername(1))
-    // console.log('app', this.state.password )
-    // console.log('username', this.state.username)
+
 
     return (
 

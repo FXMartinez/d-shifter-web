@@ -70,8 +70,7 @@ class Gamecard extends React.Component {
 
     filterFollows = (followOb) => {
         return this.state.follows.filter( follow => {
-            return follow.id != followOb.id;
-            debugger
+            return follow.id !== followOb.id
         })
     }
 

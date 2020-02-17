@@ -1,5 +1,4 @@
-// import React, { useEffect, useState } from 'react';
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react'
 import GameComments from './game-comments';

@@ -4,6 +4,7 @@ import ShowGame from '../components/show-game'
 import CommentSection from '../components/comment-section'
 import Gamecard from '../components/game-cards'
 import AccountInfo from '../components/accountinfo'
+import UserGames from '../components/usergames'
 import { 
       Switch,
       Route,
@@ -114,6 +115,14 @@ class Main extends Component {
                             <Route exact path='/Account' render={ () => 
                                 <AccountInfo 
                                     user={ this.props.user } 
+                                    findComment={this.props.findComment}
+                                    findGamename={this.props.findGamename}
+                                /> 
+                            }/>
+
+                            <Route exact path='/UserGames' render={ () =>
+                                <UserGames
+                                    user={ this.props.user }
                                     findComment={this.props.findComment}
                                     findGamename={this.props.findGamename}
                                 /> 
