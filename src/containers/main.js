@@ -6,6 +6,7 @@ import Gamecard from '../components/game-cards'
 import AccountInfo from '../components/accountinfo'
 import UserGames from '../components/usergames'
 import { 
+      Button,
       Switch,
       Route,
       Link
@@ -36,7 +37,7 @@ class Main extends Component {
     
     render() { 
 
-        let topRatedGames = this.props.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
+        // let topRatedGames = this.props.games.sort(( a, b ) => b.rating - a.rating).slice(0-4)
 
         const { activeItem } = this.state
 
@@ -52,7 +53,7 @@ class Main extends Component {
                 </div>
 
                 <Grid>
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                     <Menu fluid vertical tabular>
                     
                     <Menu.Item
@@ -84,7 +85,7 @@ class Main extends Component {
                         to={'/'}
                         name='Log Out'
                         active={activeItem === 'Log Out'}
-                        onClick={ this.handleItemClick, this.props.logout }
+                        onClick={ this.props.logout } 
                         />
 
                     </Menu>
@@ -97,11 +98,11 @@ class Main extends Component {
                             <Route exact path='/Game' render={ () => <div> <ShowGame /> </div> } />
 
                             
-                            <Route exact path='/Dopegames' render={ () => 
+                            {/* <Route exact path='/Dopegames' render={ () => 
                                     <div className='game-cards'>
                                 {  topRatedGames.map( game => { 
                                         return  <div key={ game.id }> <Gamecard game={ game } test={ this.test } user={ this.props.user } /> </div> })  } 
-                                    </div>  } />
+                                    </div>  } /> */}
 
                             <Route exact path="/Games" render={ () => 
                                     <div className='game-cards'>

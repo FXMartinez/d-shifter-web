@@ -158,7 +158,7 @@ class App extends Component {
     return (
 
       
-      <div>
+      <div className='home'>
         {
           this.state.user
           ?
